@@ -6,8 +6,7 @@
     -   show score percentage + message
     -   button back to home
 -   Use simpler verbs for simpler levels. Also maybe remove a few weird ones
--   commit
--   built
+
 
 # nice to have
 
@@ -29,3 +28,10 @@
 -   enrich data
 -   use conjugation levels per confidence level
 -   not found Page
+-   commit
+-   built
+
+
+---
+
+npm run deploy (to release on github)

@@ -55,15 +55,17 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
     const storedConfidence = getStoredValue("confidence", null);
     const storedEnergy = getStoredValue("energy", null);
-    const storedQuestionCount = getStoredValue("questionCount", null);
     const storedScoreCount = getStoredValue("scoreCount", null);
 
     if (to.path !== "/") {
-        if (to.path === "/exercise" && (!storedConfidence || !storedEnergy)) {
+        if (to.path === "/configure-challenge" && (!storedConfidence)) {
             next("/");
-            // }
-            // else if (to.path === "/results" && (!storedConfidence || !storedEnergy || storedScoreCount === null)) {
-            //     next("/");
+        }
+        else if (to.path === "/exercise" && (!storedConfidence || !storedEnergy)) {
+            next("/");
+        }
+        else if (to.path === "/results" && (!storedConfidence || !storedEnergy || storedScoreCount === null)) {
+            next("/");
         } else {
             next();
         }

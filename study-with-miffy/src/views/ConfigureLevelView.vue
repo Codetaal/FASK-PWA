@@ -48,7 +48,6 @@
 
 <script setup>
 import { ref, watch, onMounted } from "vue";
-import { useRouter } from "vue-router";
 import { RadioGroup, RadioGroupDescription, RadioGroupLabel, RadioGroupOption } from '@headlessui/vue'
 import { CheckCircleIcon } from '@heroicons/vue/20/solid'
 import { getStoredValue } from "/src/utils/storage";
@@ -59,7 +58,6 @@ const radioOptions = [
     { id: 3, title: "brave", description: "master your ability to learn about things that already happened", image: import.meta.env.BASE_URL + "images/lion.png" }
 ];
 const selectedRadioOption = ref(radioOptions[1]);
-const router = useRouter();
 
 onMounted(() => {
     const storedOption = getStoredValue("confidence", null);
