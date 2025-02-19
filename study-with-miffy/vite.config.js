@@ -3,7 +3,7 @@ import vue from '@vitejs/plugin-vue';
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
-  base: '/FASK-PWA/study-with-miffy/',
+  base: '/FASK-PWA/',
   plugins: [
     vue(),
     VitePWA({
