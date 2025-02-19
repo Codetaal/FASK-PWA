@@ -9,6 +9,7 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       filename: 'sw.js',
+      scope: '/FASK-PWA/',
       devOptions: {
         enabled: false,
         type: 'module',
