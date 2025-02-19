@@ -52,9 +52,9 @@ import { RadioGroup, RadioGroupDescription, RadioGroupLabel, RadioGroupOption } 
 import { ArrowRightCircleIcon, CheckCircleIcon } from '@heroicons/vue/20/solid'
 
 const radioOptions = [
-    { id: 1, title: "shy", description: "get familiar with common verbs and simple present tense", image: "/images/sheep.png" },
-    { id: 2, title: "curious", description: "explore ways to describe things that already happened", image: "/images/frog.png" },
-    { id: 3, title: "brave", description: "master your ability to learn about things that already happened", image: "/images/lion.png" }
+    { id: 1, title: "shy", description: "get familiar with common verbs and simple present tense", image: import.meta.env.BASE_URL + "images/sheep.png" },
+    { id: 2, title: "curious", description: "explore ways to describe things that already happened", image: import.meta.env.BASE_URL + "images/frog.png" },
+    { id: 3, title: "brave", description: "master your ability to learn about things that already happened", image: import.meta.env.BASE_URL + "images/lion.png" }
 ];
 const selectedRadioOption = ref(radioOptions[1]);
 const router = useRouter();

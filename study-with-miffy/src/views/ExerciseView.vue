@@ -111,7 +111,7 @@ onMounted(async () => {
         scoreCount.value = getStoredValue("scoreCount", 0);
 
         // Fetch data.json
-        const response = await fetch('/json/data.json'); // Ensure correct path
+        const response = await fetch(import.meta.env.BASE_URL + 'json/data.json'); // Ensure correct path
         if (!response.ok) {
             throw new Error(`Failed to fetch data: ${response.statusText}`);
         }
@@ -229,9 +229,9 @@ const checkAnswer = () => {
 
 const getAnswerExplanation = (status, correct, user = '') => {
     const images = {
-        success: '/images/miffy-cheering.png',
-        warning: '/images/miffy-peeking.png',
-        error: '/images/miffy-peeking.png',
+        success: import.meta.env.BASE_URL + 'images/miffy-cheering.png',
+        warning: import.meta.env.BASE_URL + 'images/miffy-peeking.png',
+        error: import.meta.env.BASE_URL + 'images/miffy-peeking.png',
     };
 
     const messages = {
