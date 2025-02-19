@@ -1,6 +1,5 @@
 # todo
 
--   make sure questions don't use previous question, reset options after everything option was used
 -   add final result when question limit was reached
     -   keep track of correct answers in storage
     -   redirect to new view ScoreView
@@ -18,6 +17,7 @@
     -   auto focus on new question
 -   auto checkAnswer after giving answer and pressing done/enter on keyboard
 -   answer explanation
+-   make sure questions don't use previous question, reset options after everything option was used
 
 # done
 

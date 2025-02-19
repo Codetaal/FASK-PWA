@@ -69,6 +69,8 @@ import { ref, watch, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 
+const processedQuestions = ref([]);
+
 const router = useRouter();
 const data = ref([]);
 const storedConfidence = ref({});
@@ -147,6 +149,11 @@ const loadQuestion = () => {
         return;
     }
 
+    if (questionCount.value >= Number(storedEnergy.value.title)) {
+        router.push('/results');
+        return;
+    }
+
     const selectedConjugations = getSelectedConjugations(storedConfidence.id);
     const randomVerb = getRandomItem(data.value);
 
@@ -217,6 +224,7 @@ const checkAnswer = () => {
         inputStatus.value = 'error';
         answerExplanationHtml.value = getAnswerExplanation('error', correctAnswerShort.value, userAnswer.value);
     }
+
 };
 
 const getAnswerExplanation = (status, correct, user = '') => {
