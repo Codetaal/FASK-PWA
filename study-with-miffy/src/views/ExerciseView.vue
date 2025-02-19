@@ -67,9 +67,8 @@
 <script setup>
 import { ref, watch, onMounted } from "vue";
 import { useRouter } from "vue-router";
-import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
-
-const processedQuestions = ref([]);
+import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue'
+import { getStoredValue } from '/src/utils/storage';
 
 const router = useRouter();
 const data = ref([]);
@@ -123,21 +122,6 @@ onMounted(async () => {
         console.error("Error during initialization:", error);
     }
 });
-
-// Helper function to safely retrieve localStorage values
-const getStoredValue = (key, defaultValue) => {
-    const storedValue = localStorage.getItem(key);
-    if (storedValue !== null) {
-        try {
-            return JSON.parse(storedValue);
-        } catch (error) {
-            console.warn(`Error parsing localStorage key "${key}":`, error);
-            return defaultValue;
-        }
-    }
-    localStorage.setItem(key, JSON.stringify(defaultValue));
-    return defaultValue;
-};
 
 const loadQuestion = () => {
     isQuestionModeActive.value = true;

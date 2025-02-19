@@ -35,11 +35,12 @@
         </RadioGroup>
 
         <div class="sticky inset-0 top-auto w-full py-6 bg-miffyOrange/75">
-            <button type="button"
-                class="relative overflow-hidden inline-flex items-center justify-center text-center gap-x-1 rounded-lg w-full bg-miffyWhite px-4 py-3.5 text-base font-semibold text-miffyOrange focus:ring-2 focus:ring-miffyWhite focus:outline-none"
-                @click="goToPage('/configure-challenge')">
-                <span class="">next step</span>
-            </button>
+            <router-link to="/configure-challenge" class="w-full">
+                <button type="button"
+                    class="relative overflow-hidden inline-flex items-center justify-center text-center gap-x-1 rounded-lg w-full bg-miffyWhite px-4 py-3.5 text-base font-semibold text-miffyOrange focus:ring-2 focus:ring-miffyWhite focus:outline-none">
+                    <span class="">next step</span>
+                </button>
+            </router-link>
         </div>
     </div>
 
@@ -49,7 +50,8 @@
 import { ref, watch, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { RadioGroup, RadioGroupDescription, RadioGroupLabel, RadioGroupOption } from '@headlessui/vue'
-import { ArrowRightCircleIcon, CheckCircleIcon } from '@heroicons/vue/20/solid'
+import { CheckCircleIcon } from '@heroicons/vue/20/solid'
+import { getStoredValue } from "/src/utils/storage";
 
 const radioOptions = [
     { id: 1, title: "shy", description: "get familiar with common verbs and simple present tense", image: import.meta.env.BASE_URL + "images/sheep.png" },
@@ -60,10 +62,9 @@ const selectedRadioOption = ref(radioOptions[1]);
 const router = useRouter();
 
 onMounted(() => {
-    const storedOption = localStorage.getItem("confidence");
+    const storedOption = getStoredValue("confidence", null);
     if (storedOption) {
-        const parsedOption = JSON.parse(storedOption);
-        const matchedOption = radioOptions.find(option => option.id === parsedOption.id);
+        const matchedOption = radioOptions.find(option => option.id === storedOption.id);
         if (matchedOption) {
             selectedRadioOption.value = matchedOption;
         }
@@ -74,11 +75,6 @@ onMounted(() => {
 });
 
 watch(selectedRadioOption, (newValue) => {
-    // console.log(newValue);
     localStorage.setItem("confidence", JSON.stringify(newValue));
 });
-
-const goToPage = (path) => {
-    router.push(path);
-};
 </script>

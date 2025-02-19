@@ -31,11 +31,12 @@
         </RadioGroup>
 
         <div class="sticky inset-0 top-auto w-full py-6 bg-miffyOrange/85">
-            <button type="button"
-                class="relative overflow-hidden  inline-flex items-center justify-center text-center gap-x-2 rounded-lg w-full bg-miffyWhite px-4 py-3.5 text-base font-semibold text-miffyOrange focus:ring-2 focus:ring-miffyWhite focus:outline-none"
-                @click="goToPage('/exercise')">
-                <span class="flex-1">let's study!</span>
-            </button>
+            <router-link to="/exercise" class="w-full">
+                <button type="button"
+                    class="relative overflow-hidden  inline-flex items-center justify-center text-center gap-x-2 rounded-lg w-full bg-miffyWhite px-4 py-3.5 text-base font-semibold text-miffyOrange focus:ring-2 focus:ring-miffyWhite focus:outline-none">
+                    <span class="flex-1">let's study!</span>
+                </button>
+            </router-link>
         </div>
     </div>
 
@@ -45,8 +46,9 @@
 <script setup>
 import { ref, watch, onMounted } from "vue";
 import { useRouter } from "vue-router";
-import { RadioGroup, RadioGroupDescription, RadioGroupLabel, RadioGroupOption } from '@headlessui/vue'
-import { ArrowRightCircleIcon, CheckCircleIcon } from '@heroicons/vue/20/solid'
+import { RadioGroup, RadioGroupLabel, RadioGroupOption } from '@headlessui/vue'
+import { CheckCircleIcon } from '@heroicons/vue/20/solid'
+import { getStoredValue } from "/src/utils/storage";
 
 const radioOptions = [
     { id: 1, title: '10', description: 'questions', factor: 1.2 },
@@ -54,14 +56,12 @@ const radioOptions = [
     { id: 3, title: '50', description: 'questions', factor: 2.4 },
     { id: 4, title: '100', description: 'questions', factor: 3.6 },
 ]
-const selectedRadioOption = ref(radioOptions[1])
-const router = useRouter();
+const selectedRadioOption = ref(radioOptions[1]);
 
 onMounted(() => {
-    const storedOption = localStorage.getItem("energy");
+    const storedOption = getStoredValue("energy", null);
     if (storedOption) {
-        const parsedOption = JSON.parse(storedOption);
-        const matchedOption = radioOptions.find(option => option.id === parsedOption.id);
+        const matchedOption = radioOptions.find(option => option.id === storedOption.id);
         if (matchedOption) {
             selectedRadioOption.value = matchedOption;
         }
@@ -72,14 +72,10 @@ onMounted(() => {
 });
 
 watch(selectedRadioOption, (newValue) => {
-    console.log(newValue);
     localStorage.setItem("energy", JSON.stringify(newValue));
 });
 
+// Reset
 localStorage.setItem("questionCount", JSON.stringify(1));
 localStorage.setItem("scoreCount", JSON.stringify(0));
-
-const goToPage = (path) => {
-    router.push(path);
-};
 </script>

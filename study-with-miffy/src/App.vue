@@ -20,5 +20,6 @@ import FooterNote from './components/FooterNote.vue'
 
 const route = useRoute();
 
-const isAllowedPage = computed(() => route.path !== "/exercise" && route.name === "/404");
+const isAllowedPage = computed(() => (route.path !== "/exercise" && route.path !== "/results") && route.name !== "/404");
+// console.log(isAllowedPage.value);
 </script>

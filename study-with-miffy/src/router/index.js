@@ -4,6 +4,7 @@ import ConfigureChallengeView from "../views/ConfigureChallengeView.vue";
 import ExerciseView from "../views/ExerciseView.vue";
 import ResultsView from "../views/ResultsView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
+import { getStoredValue } from "/src/utils/storage";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -41,23 +42,6 @@ const router = createRouter({
             component: ResultsView,
             props: true,
         },
-        // {
-        //     path: "/webtoon/:titleNo",
-        //     name: "WebtoonDetails",
-        //     component: WebtoonDetailsView,
-        //     props: true,
-        // },
-        // {
-        //     path: "/webtoon/:titleNo/:episodeNo",
-        //     name: "WebtoonEpisode",
-        //     component: WebtoonEpisodeView,
-        //     props: true,
-        // },
-        // {
-        //     path: "/not-found",
-        //     name: "404",
-        //     component: NotFoundView,
-        // },
         {
             path: "/:pathMatch(.*)*",
             // redirect: "/not-found",
@@ -66,5 +50,27 @@ const router = createRouter({
         },
     ],
 });
+
+// 🌍 Global Navigation Guard
+router.beforeEach((to, from, next) => {
+    const storedConfidence = getStoredValue("confidence", null);
+    const storedEnergy = getStoredValue("energy", null);
+    const storedQuestionCount = getStoredValue("questionCount", null);
+    const storedScoreCount = getStoredValue("scoreCount", null);
+
+    if (to.path !== "/") {
+        if (to.path === "/exercise" && (!storedConfidence || !storedEnergy)) {
+            next("/");
+            // }
+            // else if (to.path === "/results" && (!storedConfidence || !storedEnergy || storedScoreCount === null)) {
+            //     next("/");
+        } else {
+            next();
+        }
+    } else {
+        next();
+    }
+});
+
 
 export default router;
