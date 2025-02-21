@@ -42,7 +42,7 @@
 import { ref, onMounted } from "vue";
 
 const deferredPrompt = ref(null);
-const show = ref(false);
+// const show = ref(false);
 
 onMounted(() => {
     const showBanner = localStorage.getItem("showBanner");
@@ -52,7 +52,7 @@ onMounted(() => {
         window.addEventListener("beforeinstallprompt", (event) => {
             event.preventDefault();
             deferredPrompt.value = event;
-            show.value = true;
+            // show.value = true;
         });
     }
 });

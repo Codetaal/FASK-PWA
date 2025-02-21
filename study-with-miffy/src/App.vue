@@ -5,8 +5,8 @@
     <div class="px-8">
       <router-view></router-view>
     </div>
-    <div class="px-8 py-8 mt-auto">
-      <FooterNote v-if="isAllowedPage" />
+    <div class="px-8 py-8 mt-auto" v-if="isAllowedPage">
+      <FooterNote />
     </div>
   </div>
 </template>
@@ -21,5 +21,4 @@ import FooterNote from './components/FooterNote.vue'
 const route = useRoute();
 
 const isAllowedPage = computed(() => (route.path !== "/exercise" && route.path !== "/results") && route.name !== "/404");
-// console.log(isAllowedPage.value);
 </script>

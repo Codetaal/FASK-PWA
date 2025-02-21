@@ -1,19 +1,9 @@
 self.addEventListener('install', (event) => {
-    console.log('Service Worker installed');
-    event.waitUntil(
-        caches.open('app-cache').then((cache) => {
-            return cache.addAll([
-                '/',
-                '/index.html',
-                '/icons/icon-192x192.png',
-                '/icons/icon-512x512.png'
-            ]);
-        })
-    );
+    // console.log('Service Worker installed');
+    self.skipWaiting(); // Immediately activate the new SW
 });
 
-console.log('test');
-
-self.addEventListener("fetch", (event) => {
-    event.respondWith(fetch(event.request));
+self.addEventListener('activate', (event) => {
+    // console.log('Service Worker activated');
+    event.waitUntil(self.clients.claim()); // Take control of all pages immediately
 });
