@@ -42,7 +42,7 @@
                         class="block px-3 py-2 -mx-3 text-base font-semibold leading-7 hover:text-miffyYellow ">
                         {{ item.name }}
                     </RouterLink>
-                    <a href="mailto:info@codetaal.com"
+                    <a href="mailto:hello@sliceofdutch.com"
                         class="block px-3 py-2 -mx-3 text-base font-semibold leading-7 hover:text-miffyYellow">
                         contact me
                     </a>
