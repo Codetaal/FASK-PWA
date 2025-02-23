@@ -3,13 +3,11 @@ import vue from '@vitejs/plugin-vue';
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
-  base: '/study-dutch/',
   plugins: [
     vue(),
     VitePWA({
       registerType: 'autoUpdate',
       filename: 'sw.js',
-      scope: '/study-dutch/',
       devOptions: {
         enabled: false,
         type: 'module',
