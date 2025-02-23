@@ -16,9 +16,9 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,ico,png,svg}']
       },
       manifest: {
-        name: "Study Dutch",
-        short_name: "StudyDutch",
-        description: "A Vue 3 PWA Starter with Tailwind",
+        name: "Slice of Dutch",
+        short_name: "SliceOfDutch",
+        description: "‘Slice of Dutch’ was created to take the pain out of your learning routine and inject a little fun back into the process",
         theme_color: "#ffffff",
         icons: [
           {
