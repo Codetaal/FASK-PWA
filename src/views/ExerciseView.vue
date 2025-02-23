@@ -20,7 +20,7 @@
 
             <div class="sticky inset-0 top-auto w-full py-6 bg-miffyOrange/85">
                 <button type="button"
-                    class="relative overflow-hidden  inline-flex items-center justify-center text-center gap-x-2 rounded-lg w-full bg-miffyWhite px-4 py-3.5 text-lg font-semibold text-miffyOrange focus:ring-2 focus:ring-miffyWhite focus:outline-none"
+                    class="relative overflow-hidden inline-flex items-center justify-center text-center gap-x-2 rounded-lg w-full bg-miffyWhite px-4 py-3.5 text-base font-semibold text-miffyOrange focus:ring-2 focus:ring-miffyWhite focus:outline-none"
                     @click="checkAnswer()">
                     check
                 </button>
@@ -36,12 +36,10 @@
             </TransitionChild>
 
             <div class="fixed inset-0 z-10 overflow-y-auto">
-                <div class="flex items-end justify-center min-h-full p-4 text-center sm:items-center sm:p-0">
-                    <TransitionChild as="template" enter="ease-out duration-300"
-                        enter-from="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                        enter-to="opacity-100 translate-y-0 sm:scale-100" leave="ease-in duration-200"
-                        leave-from="opacity-100 translate-y-0 sm:scale-100"
-                        leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
+                <div class="flex items-end justify-center min-h-full p-4 text-center">
+                    <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0 translate-y-4"
+                        enter-to="opacity-100 translate-y-0" leave="ease-in duration-200"
+                        leave-from="opacity-100 translate-y-0" leave-to="opacity-0 translate-y-4">
                         <DialogPanel
                             class="relative w-full px-4 pt-6 pb-4 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl">
                             <div>
@@ -49,9 +47,9 @@
                                     <p class="text-sm" v-html="answerExplanationHtml"></p>
                                 </div>
                             </div>
-                            <div class="mt-5 sm:mt-6">
+                            <div class="mt-5">
                                 <button type="button"
-                                    class="relative overflow-hidden  inline-flex items-center justify-center text-center gap-x-2 rounded-lg w-full px-4 py-3.5 text-lg font-semibold text-miffyWhite bg-miffyOrange focus:ring-2 focus:ring-miffyWhite focus:outline-none"
+                                    class="relative overflow-hidden inline-flex items-center justify-center text-center gap-x-2 rounded-lg w-full px-4 py-3.5 text-base font-semibold text-miffyWhite bg-miffyOrange focus:ring-2 focus:ring-miffyWhite focus:outline-none"
                                     @click="loadQuestion()">okay, next!</button>
                             </div>
                         </DialogPanel>

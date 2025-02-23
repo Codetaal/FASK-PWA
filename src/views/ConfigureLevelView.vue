@@ -34,7 +34,7 @@
             </div>
         </RadioGroup>
 
-        <div class="sticky inset-0 top-auto w-full py-6 bg-miffyOrange/75">
+        <div class="w-full py-6 bg-miffyOrange/75">
             <router-link to="/configure-challenge" class="w-full">
                 <button type="button"
                     class="relative overflow-hidden inline-flex items-center justify-center text-center gap-x-1 rounded-lg w-full bg-miffyWhite px-4 py-3.5 text-base font-semibold text-miffyOrange focus:ring-2 focus:ring-miffyWhite focus:outline-none">
